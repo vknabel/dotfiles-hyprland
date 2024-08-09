@@ -1,0 +1,153 @@
+// // -*- mode: jsonc -*-
+{
+  "layer": "top",
+  "position": "top",
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["custom/music"],
+  "modules-right": [
+    "tray",
+    "pulseaudio",
+    "backlight",
+    "battery",
+    "power-profiles-daemon",
+    "network",
+    "custom/notification",
+    "clock",
+    "custom/lock",
+    "custom/power",
+  ],
+  "hyprland/window": {
+    "icon": true,
+  },
+  "power-profiles-daemon": {
+    "format": "{icon}",
+    "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+    "tooltip": true,
+    "format-icons": {
+      "default": "",
+      "performance": "",
+      "balanced": "",
+      "power-saver": "",
+    },
+  },
+  "battery": {
+    "states": {
+      "good": 70,
+      "warning": 30,
+      "critical": 15,
+    },
+    "format": "{capacity}% {icon}",
+    "format-full": "{icon}",
+    "format-good": "{icon}",
+    "format-charging": "{capacity}% \ueea1",
+    "format-plugged": "\uf1e6",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["\uf244", "\uf243", "\uf242", "\uf241", "\uf240"],
+  },
+  "custom/power": {
+    "format": "⏻ ",
+    "on-click": "walker -m custom_commands",
+    // THESE NEVER WORKED
+    // "tooltip": false,
+    // "menu": "on-click",
+    // "menu-file": "~/.config/waybar/power_menu.xml", // Menu file in resources folder
+    // "menu-actions": {
+    // 	"shutdown": "shutdown",
+    // 	"reboot": "reboot",
+    // 	"suspend": "systemctl suspend",
+    // 	"hibernate": "systemctl hibernate"
+    // }
+  },
+  "network": {
+    // "interface": "wlp2*", // (Optional) To force the use of this interface
+    "format-wifi": "\udb82\udd28 {signalStrength}%",
+    "format-ethernet": "",
+    "tooltip-format": "{ifname} via {gwaddr} ",
+    "format-linked": "{ifname} (No IP) ",
+    "format-disconnected": "Disconnected ⚠",
+    "format-alt": "{ifname}: {ipaddr}/{cidr}",
+  },
+  "hyprland/workspaces": {
+    "format": " {id} {windows} ",
+    "format-window-separator": " ",
+    "window-rewrite-default": "\udb81\ude14",
+    "window-rewrite": {
+      "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
+      "class<firefox>": "", // Windows whose classes are "firefox"
+      "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+      "title<.*gitlab.*>": "\uf296",
+      "spotify": "\uf1bc",
+      "helix": "\udb81\ude84",
+      "slack": "\uf198",
+      "kitty": "\uf489", // Windows that contain "foot" in either class or title. For optimization reasons, it will only match against a title if at least one other window explicitly matches against a title.
+      "class<code>": "󰨞",
+      "terraform": "\udb84\udc62",
+      "tofu": "\udb84\udc62",
+      "kubectl": "\udb84\udcfe",
+      "metal": "\udb84\udcfe",
+      "metalctl": "\udb84\udcfe",
+      "cloudctl": "\udb84\udcfe",
+    },
+    // "format": " {windows} ",
+    "format-icons": {
+      "default": "",
+    },
+  },
+  "tray": {
+    "icon-size": 21,
+    "spacing": 10,
+  },
+  "custom/music": {
+    "format": "  {}",
+    "escape": true,
+    "interval": 5,
+    "tooltip": false,
+    "exec": "playerctl metadata --format='{{ title }}'",
+    "on-click": "playerctl play-pause",
+    "max-length": 50,
+  },
+  "custom/notification": {
+    "tooltip": false,
+    "format": "{} {icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": "",
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true,
+  },
+  "clock": {
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format-alt": "\uf073 {:%Y-%m-%d}",
+    "format": "\uf43a {:%H:%M}",
+  },
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": ["", "", "", "", "", "", "", "", ""],
+  },
+  "pulseaudio": {
+    // "scroll-step": 1, // %, can be a float
+    "format": "{icon} {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+  "custom/lock": {
+    "tooltip": false,
+    "on-click": "hyprlock",
+    "format": "",
+  },
+}

@@ -1,0 +1,9 @@
+.DS_Store
+bin
+\.git
+machine
+\.gitignore
+
+README.md
+.+\.age
+.+\.sops

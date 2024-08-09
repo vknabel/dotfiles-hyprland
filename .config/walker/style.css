@@ -1,0 +1,112 @@
+@import "mocha.css";
+
+* {
+  color: @text;
+}
+
+#window {
+  background: none;
+}
+
+#box {
+  background: @base;
+  padding: 10px;
+  border-radius: 10px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: @teal;
+}
+
+#password {
+  outline: none;
+  outline-width: 0px;
+  border-radius: 0;
+  box-shadow: none;
+  background: @lavender;
+}
+
+#searchwrapper {
+}
+
+#search,
+#typeahead {
+  border-radius: 0;
+  outline: none;
+  outline-width: 0px;
+  box-shadow: none;
+  border-bottom: none;
+  border: none;
+  background: @surface0;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  border-radius: 2px;
+}
+
+#spinner {
+  opacity: 0;
+}
+
+#spinner.visible {
+  opacity: 1;
+}
+
+#typeahead {
+  background: @blue;
+  opacity: 0.5;
+}
+
+#search placeholder {
+  opacity: 0.5;
+}
+
+#list {
+  background: @base;
+}
+
+row:selected {
+  background: @surface0;
+}
+
+.item {
+  padding: 5px;
+  border-radius: 2px;
+}
+
+.image {
+  padding-right: 8px;
+}
+
+.image.standalone {
+  padding-right: 0px;
+}
+
+.icon {
+  padding-right: 5px;
+}
+
+.textwrapper {
+}
+
+.label {
+}
+
+.sub {
+  opacity: 0.5;
+}
+
+.activationlabel {
+  opacity: 0.25;
+}
+
+.activation .activationlabel {
+  opacity: 1;
+  color: @subtext1;
+}
+
+.activation .textwrapper,
+.activation .icon,
+.activation .search {
+  opacity: 0.5;
+}

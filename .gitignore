@@ -1,0 +1,13 @@
+**/.ssh/config.d/*
+!**/.ssh/config.d/.gitkeep
+!**/.ssh/config.d/*.age
+
+.env
+.private/
+**/.config/sops/age/keys.txt
+**/.cloudctl/config.yaml
+**/.metal-stack-cloud/config.yaml
+**/.metalctl/config.yaml
+
+**/privatekey
+**/publickey
