@@ -5,5 +5,7 @@ machine
 \.gitignore
 
 README.md
+LICENSE
 .+\.age
 .+\.sops
+justfile
