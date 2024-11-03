@@ -12,6 +12,7 @@
     "power-profiles-daemon",
     "network",
     "custom/notification",
+    "custom/updates",
     "clock",
     "custom/lock",
     "custom/power",
@@ -29,6 +30,15 @@
       "balanced": "",
       "power-saver": "",
     },
+  },
+  // Updates Count
+  "custom/updates": {
+    "format": "  {}",
+    "escape": true,
+    "exec": "checkupdates | wc -l",
+    "restart-interval": 600,
+    "on-click": "kitty -T 'sudo pacman -Syu' sudo pacman -Syu; pkill -SIGRTMIN+8 waybar",
+    "signal": 8,
   },
   "battery": {
     "states": {
@@ -73,8 +83,11 @@
     "window-rewrite-default": "\udb81\ude14",
     "window-rewrite": {
       "title<.*youtube.*>": "", // Windows whose titles contain "youtube"
-      "class<firefox>": "", // Windows whose classes are "firefox"
-      "class<firefox> title<.*github.*>": "", // Windows whose class is "firefox" and title contains "github". Note that "class" always comes first.
+      "class<vivaldi>": "", // Windows whose classes are "(firefox|vivaldi)"
+      "class<firefox>": "", // Windows whose classes are "(firefox|vivaldi)"
+      "title<.*github.*>": "", // Windows whose class is "(firefox|vivaldi)" and title contains "github". Note that "class" always comes first.
+      "title<.*microsoft teams.*>": "󰊻",
+      "title<.*outlook.*>": "󰴢",
       "title<.*gitlab.*>": "\uf296",
       "spotify": "\uf1bc",
       "helix": "\udb81\ude84",
